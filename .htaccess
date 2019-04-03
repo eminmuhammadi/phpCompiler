@@ -1,1 +1,26 @@
 php_value max_execution_time 10
+LimitRequestBody 10240000
+
+Header unset X-Powered-By
+Header set X-Powered-By phpCompiler
+Header unset Server
+ServerSignature Off
+Options All -Indexes
+
+<IfModule mod_headers.c>
+	Header set X-XSS-Protection "1; mode=block"
+	Header always append X-Frame-Options SAMEORIGIN
+	Header set X-Content-Type-Options nosniff
+</IfModule>
+
+<FilesMatch "\.(?:emiga.php|emiga)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Protect FingetPrint Attacks
+<IfModule mod_rewrite.c>
+	RewriteCond %{QUERY_STRING} PHP[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12} [NC,OR]
+	RewriteCond %{REQUEST_URI} =PHP[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12} [NC]
+	RewriteRule .* - [F,L]
+</IfModule>
