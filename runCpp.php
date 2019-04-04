@@ -1,5 +1,7 @@
 <?php
 
+  // Pay Attention for writing Permission for creating files 
+
   require_once realpath($_SERVER["DOCUMENT_ROOT"]).'/src/compiler.emiga.php';
 
   // Create new Class
@@ -7,16 +9,16 @@
 
   // Declare variables
 
-  // Python mode (other 5 languages support // please read about in source code)
+  // Cpp mode (other 5 languages support // please read about in source code)
 
   $env = [
-   'command'    => 'python3',
+   'command'    => 'g++',
    'executable' => 'a.out',
    'runFile'    => './a.out' , //out
    'time'       => '1', //seconds
    'code'       => $_POST['code'] ,
    'input'      => $_POST['input'],
-   'fnCode'     => 'main.py',
+   'fnCode'     => 'main.cpp',
    'fnInput'    => 'input.txt',
    'fnError'    => 'error.txt'
   ];
@@ -43,10 +45,10 @@
 
   // Join Datas
   $data = [
-    'code'   => $env['code'] ,
+    'code'       => $env['code'] ,
     'time_limit' => $time,
-    'input'  => $env['input'],
-    'result' => $RESULT
+    'input'      => $env['input'],
+    'result'     => $RESULT
   ];
 
   // Print Json

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <body>
+    <form action="/runJavac.php" method="post">
+
+      <!-- 
+          It is a basic post for 
+          compiler. 
+      -->     
+      <caption><h1>Code :</h1></caption>
+      
+      <!-- Attention Class Main -->
+      <textarea name="code" rows="8" cols="160" placeholder="Enter The Code">
+      class Main 
+        { 
+          public static void main(String args[]) 
+        { 
+          System.out.println("Hello, World"); 
+        } 
+      }   
+      </textarea>
+      <caption><h1>Input :</h1></caption>      
+      <textarea name="input" rows="2" cols="160" placeholder="Enter The Input"></textarea>
+
+      <br>
+      <br>
+      
+      <input type="submit" value="Submit">
+
+    </form>
+  </body>
+
+
+</html>
