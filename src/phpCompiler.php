@@ -343,7 +343,7 @@ class phpCompiler
 
 		else
 		{
-			$data['output']=$error;
+			$data['output']=null;
 			$check=1;
 		}
 
@@ -355,6 +355,7 @@ class phpCompiler
 		// The format string supports argument numbering/swapping. 
 		$seconds = sprintf('%0.2f', $seconds);
 		$data['time'] = $seconds;
+		$data['error'] = $error;
 
 
 		/**
