@@ -73,8 +73,9 @@
  * COMMANDS: python , python2 , python3
  * Extension : main.py
  */
+namespace eminmuhammadi;
 
-class Compiler
+class phpCompiler
 {
 
 	/**
@@ -119,9 +120,9 @@ class Compiler
 	fwrite($file_code,$code);
 	fclose($file_code);
 
-	$file_in=fopen($fnInput,"w+");
-	fwrite($file_in,$input);
-	fclose($file_in);
+	$fIn=fopen($fnInput,"w+");
+	fwrite($fIn,$input);
+	fclose($fIn);
 
 	// Write permission for files
 	exec("chmod 777 $fnError");
@@ -129,21 +130,37 @@ class Compiler
 	// Preparation
 	shell_exec($cmd_error);
 	$error=file_get_contents($fnError);
+	$StartTime = microtime(true);
 
 
 	// Check Error
 	if(trim($error)=="")
 	{
-		if(trim($input)=="") { $output=shell_exec($cmd); }
-		else { $cmd=$cmd." < ".$fIn; $output=shell_exec($cmd); }
+		if(trim($input)=="") { 
+			$output=shell_exec($cmd); 
+		}
+
+		else { 
+			$cmd=$cmd." < ".$fIn; $output=shell_exec($cmd); 
+		}
 
 		$data['output']=$output;
 	}
 
 	else
 	{
-		$data['output']=$error;
+		$data['output']=null;
+
     }
+
+		// Calculate Execute Time
+		$endTime = microtime(true);
+		$seconds = $endTime - $StartTime;
+		$seconds = sprintf('%0.2f', $seconds);
+		$data['time'] = $seconds;
+
+		//Error
+		$data['error']=$error;
 
     	// Clear Trash Files
 		exec("rm $fnCode");
@@ -200,8 +217,10 @@ class Compiler
 				$output=shell_exec($out);
 			}
 			$data['output']=$output;
+			$data['error']=$runtime_error;			
 		}
 
+		
 		else if(!strpos($error,"error"))
 		{
 	

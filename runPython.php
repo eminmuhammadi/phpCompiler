@@ -1,11 +1,11 @@
 <?php
 
-  // Pay Attention for writing Permission for creating files 
+  // Pay Attention for writing Permission for creating files
 
-  require_once realpath($_SERVER["DOCUMENT_ROOT"]).'/src/compiler.emiga.php';
+  require_once 'vendor/autoload.php';
 
   // Create new Class
-  $COMPILER = new Compiler();
+  $COMPILER = new eminmuhammadi\phpCompiler();
 
   // Declare variables
 

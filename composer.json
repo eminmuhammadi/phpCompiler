@@ -1,0 +1,24 @@
+{
+    "name": "eminmuhammadi/phpcompiler",
+    "description": "The basic PHP Compiler for Python Cpp Java C11 C",
+    "keywords":["eminmuhammadi" , "phpCompiler" , "php" , "compiler" , "java" , "python" , "c" , "c11" , "cpp"],
+    "version":"1.0.0",
+    "readme":"readme.md",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emin Muhammadi",
+            "email": "muemin17631@sabah.edu.az"
+        }
+    ],
+    "autoload":{
+	     "classmap":[
+	        "src/phpCompiler.php"
+	     ]
+    },
+    "require":
+    {
+	     "php" : ">=7.3.1"
+    }
+}
