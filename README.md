@@ -1,7 +1,9 @@
 # phpCompiler
-<p align="center">
+
+<p align="center" border="1">
   <img src="/test/screen.png">
 </p>
+
 The basic PHP Compiler for Python , Cpp  , Java  , C11  ,C 
 ```shell
 git clone https://github.com/eminmuhammadi/phpCompiler.git
