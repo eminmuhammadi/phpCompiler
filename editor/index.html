@@ -112,6 +112,10 @@
       			<div class="modal-body">
       				<table class="table" cellpadding="0">
       					<tr>
+      						<th>Key</th>
+      						<th>Clarification</th>
+      					</tr>      					
+      					<tr>
       						<td>F12</td>
       						<td>Run</td>
       					</tr> 
@@ -123,10 +127,6 @@
       						<td>F9</td>
       						<td>Toggle Panel</td>
       					</tr>    						      					     					
-      					<tr>
-      						<th>Key</th>
-      						<th>Clarification</th>
-      					</tr>
       					<tr>
       						<td>Ctrl-F / Cmd-F</td>
       						<td>Start searching</td>
@@ -152,6 +152,7 @@
       						<td>Jump to line</td>
       					</tr>			      					      							
       				</table>
+      				<small>** Please change file extension for changing language</small>
 		      	</div>
     		</div>
   		</div>
@@ -280,7 +281,7 @@
    			$("#output").append('$'+spec+' > Setted successfully\n');
   		} 
   		else {
-    		alert("Could not find a mode corresponding to " + val);
+    		alert("Please change file extensin to correct one. " + val + " is invalid.");
   		}
 	}
 
@@ -313,7 +314,7 @@
 							return '/runC.php';
 						}
 						else {
-    						alert("Could not find a mode corresponding to " + fn);
+    						alert("Please change file extensin to correct one. " + fn + " is invalid.");
     						return false;
 						}
 					}
