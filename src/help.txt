@@ -1,0 +1,44 @@
+ /*
+ *  Tested in Linux Debian Arch
+ *
+ *	apt-get install g++
+ *	apt-get install gcc
+ *	apt-get install clang
+ *	apt-get install javac
+ *	apt-get install python
+ *
+ *  Supported Languages : C++ , C , C11 , Java , Python (2.7 or 3)
+ *  		 
+ * ========== Commands =========
+ *
+ *  FOR C++  = g++
+ *  FOR C    = gcc
+ *  FOR C11  = g++ -std=c++11
+ *  FOR JAVA = javac
+ *
+ * ========== Out ============== 
+ *
+ *  FOR C++  = timeout 5s ./a.out
+ *  FOR C    = timeout 5s ./a.out
+ *  FOR C11  = timeout 5s ./a.out
+ *  FOR JAVA = timeout 5s java Main
+ *
+ * ======= Executable =========
+ *
+ *  FOR C++  = a.out
+ *  FOR C    = a.out
+ *  FOR C11  = a.out
+ *  FOR JAVA = *.class
+ *
+ * ======== File Extension ======
+ *
+ *  FOR C++  = main.cpp
+ *  FOR C    = main.c
+ *  FOR C11  = main.cpp
+ *  FOR JAVA = main.java
+ *
+ * ======== Python ==============
+ * [ Beta ]
+ * COMMANDS: python , python2 , python3
+ * Extension : main.py
+ */

@@ -1,6 +1,6 @@
 {
     "name": "eminmuhammadi/phpcompiler",
-    "description": "The basic PHP Compiler for Python Cpp Java C11 C",
+    "description": "The basic PHP Compiler for Python , Cpp , Java ,  C11 , C",
     "keywords":["eminmuhammadi" , "phpCompiler" , "php" , "compiler" , "java" , "python" , "c" , "c11" , "cpp"],
     "version":"1.0.0",
     "readme":"readme.md",

@@ -30,67 +30,34 @@
  * @version    1.0.0
  * @link       https://github.com/eminmuhammadi/phpCompiler
  *
- *  Tested in Linux Debian Arch
- *
- *	apt-get install g++
- *	apt-get install gcc
- *	apt-get install clang
- *	apt-get install javac
- *	apt-get install python
- *
- *  Supported Languages : C++ , C , C11 , Java , Python (2.7 or 3)
- *  		 
- * ========== Commands =========
- *
- *  FOR C++  = g++
- *  FOR C    = gcc
- *  FOR C11  = g++ -std=c++11
- *  FOR JAVA = javac
- *
- * ========== Out ============== 
- *
- *  FOR C++  = timeout 5s ./a.out
- *  FOR C    = timeout 5s ./a.out
- *  FOR C11  = timeout 5s ./a.out
- *  FOR JAVA = timeout 5s java Main
- *
- * ======= Executable =========
- *
- *  FOR C++  = a.out
- *  FOR C    = a.out
- *  FOR C11  = a.out
- *  FOR JAVA = *.class
- *
- * ======== File Extension ======
- *
- *  FOR C++  = main.cpp
- *  FOR C    = main.c
- *  FOR C11  = main.cpp
- *  FOR JAVA = main.java
- *
- * ======== Python ==============
- * [ Beta ]
- * COMMANDS: python , python2 , python3
- * Extension : main.py
  */
+
 namespace eminmuhammadi;
 
 class phpCompiler
 {
 
-	/**
-	*  Constructor (Checking System)
-	*/
+
 	function __construct()
 	{
 
-		/*
-			ToDo Task
-			Create exec command is executable
-			Create CPU Limit
+   			
+		/**
+		 *  Check function exists , not disabled or safe mode on
+		 */
 
-		*/
+		$exec = function_exists('exec') && !in_array('exec', array_map('trim', explode(', ', ini_get('disable_functions')))) && strtolower(ini_get('safe_mode')) != 1;
 
+		$shell_exec = function_exists('shell_exec') && !in_array('shell_exec', array_map('trim', explode(', ', ini_get('disable_functions')))) && strtolower(ini_get('safe_mode')) != 1;
+
+		if(!$exec) {  
+			throw new \Exception("Please enable exec() function or disable SAFE mode");
+		}
+		else if(!$shell_exec){
+			throw new \Exception("Please enable shell_exec() function or disable SAFE mode");
+		}
+
+	
 	}
 
 	public function setTimeOut($time)
@@ -106,52 +73,53 @@ class phpCompiler
 	public function runPython($cmd,$time,$run,$runFile,$code,$input,$fnCode,$fnInput,$fnError)
 	{
 
-	/**
-	*  Python Section 
-	*  To do List 
-	*  Please secure the application using timeout
-	*/
+		/**
+		*  Python Section 
+		*  To do List 
+		*  Please secure the application using timeout
+		*/
 
-	$cmd=$cmd." ".$fnCode;
-	$cmd_error=$cmd." 2>".$fnError;
+		$cmd=$cmd." ".$fnCode;
+		$cmd_error=$cmd." 2>".$fnError;
 
-	// Write Files
-	$file_code=fopen($fnCode,"w+");
-	fwrite($file_code,$code);
-	fclose($file_code);
+		// Write Files
+		$file_code=fopen($fnCode,"w+");
+		fwrite($file_code,$code);
+		fclose($file_code);
 
-	$fIn=fopen($fnInput,"w+");
-	fwrite($fIn,$input);
-	fclose($fIn);
+		$fIn=fopen($fnInput,"w+");
+		fwrite($fIn,$input);
+		fclose($fIn);
 
-	// Write permission for files
-	exec("chmod 777 $fnError");
+		// Write permission for files
+		exec("chmod -R 777 $fnError");
 
-	// Preparation
-	shell_exec($cmd_error);
-	$error=file_get_contents($fnError);
-	$StartTime = microtime(true);
+		// Preparation
+		shell_exec($cmd_error);
+		$error=file_get_contents($fnError);
+		$StartTime = microtime(true);
 
 
-	// Check Error
-	if(trim($error)=="")
-	{
-		if(trim($input)=="") { 
-			$output=shell_exec($cmd); 
+		// Check Error
+		if(trim($error)=="")
+		{
+			if(trim($input)=="") { 
+				$output=shell_exec($cmd); 
+			}
+
+			else { 
+				$cmd=$cmd." < ".$fIn; 
+				$output=shell_exec($cmd); 
+			}
+
+			$data['output']=$output;
 		}
 
-		else { 
-			$cmd=$cmd." < ".$fIn; $output=shell_exec($cmd); 
-		}
+		else
+		{
+			$data['output']=null;
 
-		$data['output']=$output;
-	}
-
-	else
-	{
-		$data['output']=null;
-
-    }
+    	}
 
 		// Calculate Execute Time
 		$endTime = microtime(true);
@@ -160,7 +128,13 @@ class phpCompiler
 		$data['time'] = $seconds;
 
 		//Error
-		$data['error']=$error;
+		if(trim($error)=="")
+		{
+			$data['error']=null;
+		}
+		else{
+			$data['error']=$error;
+		}
 
     	// Clear Trash Files
 		exec("rm $fnCode");
@@ -168,7 +142,6 @@ class phpCompiler
 
 		return $data;
 
-		//stops function
 
 	}
 
@@ -190,8 +163,8 @@ class phpCompiler
 		fclose($fIn);
 
 		// Write Permission
-		exec("chmod 777 $run"); 
-		exec("chmod 777 $fnError");	
+		exec("chmod -R 777 $run"); 
+		exec("chmod -R 777 $fnError");	
 
 		shell_exec($cmd_error);
 
@@ -217,7 +190,14 @@ class phpCompiler
 				$output=shell_exec($out);
 			}
 			$data['output']=$output;
-			$data['error']=$runtime_error;			
+			if(trim($runtime_error)=="")
+			{
+				$data['error']=null;
+			}
+			else
+			{
+				$data['error']=$runtime_error;			
+			}
 		}
 
 		
@@ -239,7 +219,8 @@ class phpCompiler
 			
 		else
 		{
-		$data['output']=$error;
+			$data['output']=null;
+			$data['error']=$error;
 		}
 
 
@@ -251,8 +232,15 @@ class phpCompiler
 
 
 		//Verdict
-		if($seconds>$time) { $data['verdict']='TLE'; }
-		else { $data['verdict']='AC'; }
+		if($seconds>$time) 
+		{ 
+			$data['verdict']='TLE'; 
+		}
+
+		else 
+		{ 
+			$data['verdict']='AC'; 
+		}
 
 
 		// Remove Trash Files
@@ -261,7 +249,6 @@ class phpCompiler
 		exec("rm $run");
 		return $data;
 
-		//stops function
 
 	}
 
@@ -355,7 +342,14 @@ class phpCompiler
 		// The format string supports argument numbering/swapping. 
 		$seconds = sprintf('%0.2f', $seconds);
 		$data['time'] = $seconds;
-		$data['error'] = $error;
+
+		if(trim($error)=="")
+		{
+			$data['error']=null;
+		}
+		else{
+			$data['error']=$error;
+		}
 
 
 		/**
@@ -383,7 +377,6 @@ class phpCompiler
 		exec("rm $run");
 
 		return $data;
-		// stops function
 
 	}
 
@@ -408,9 +401,10 @@ class phpCompiler
   		}
 
   		else {
-			$data['output']  = 'Error in compiling. Please contact with your webmaster';
+  			$data['output']  = null;
+			$data['error']   = 'Error -> Please choose a correct command';
 			$data['vardict'] = 'RTE' ;
-			$data['time']    = '0' ;
+			$data['time']    = '0.00' ;
 			return $data;
 		}
 
