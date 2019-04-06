@@ -1,13 +1,14 @@
 # phpCompiler
 
-<p align="center" border="1">
-  <img src="/test/screen.png">
-</p>
-
 The basic PHP Compiler for Python , Cpp  , Java  , C11  ,C 
+
 ```shell
 git clone https://github.com/eminmuhammadi/phpCompiler.git
 ```
+<p align="center" style="border:1px solid #e5e5e5;">
+  <img src="/test/screen.png">
+</p>
+
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 ### Prerequisites
