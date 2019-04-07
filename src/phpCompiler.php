@@ -410,4 +410,25 @@ class phpCompiler
 
 	}
 
+	function post($url, $param = array()){
+    	$PostParam = http_build_query($param);
+    	$options = array(
+        	'http' =>
+            	array(
+                	'method'  => 'POST',
+                	'header'  => 'Content-type: application/x-www-form-urlencoded',
+                	'content' => $PostParam
+            	)
+    		);
+
+    	$getContext  = stream_context_create($options);
+    	$result = file_get_contents($url, false, $getContext);
+    	
+    	if($result === false){
+        	$error = error_get_last();
+        	throw new Exception('POST request failed: ' . $error['message']);
+   	 	}
+    	return $result;
+	}
+
 }
