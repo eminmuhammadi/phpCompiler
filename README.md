@@ -1,12 +1,12 @@
 # phpCompiler
 
-The basic PHP Compiler for Python , Cpp  , Java  , C11  ,C 
+The basic PHP Compiler for Python , Cpp  , Java  , C11  ,C
 
 ```shell
 git clone https://github.com/eminmuhammadi/phpCompiler.git
 ```
 <p align="center" style="border:1px solid #e5e5e5;">
-  <img src="/test/screen.png">
+  <img src="/docs/screen.png">
 </p>
 
 ## Getting Started
@@ -101,14 +101,14 @@ Collect all datas for compile procession.
 That's all and we need to create application service a json type.
 ```php
   header('Content-Type: application/json');
-  
+
   $data = [
     'code'       => $env['code'] ,
     'time_limit' => $time,
     'input'      => $env['input'],
     'result'     => $RESULT
   ];
-  
+
   echo json_encode($data,JSON_PRETTY_PRINT);
 ```
 JSON shows like :
