@@ -44,6 +44,10 @@ and Create new class using ```eminmuhammadi\phpCompiler() ```
 ```php
 $COMPILER = new eminmuhammadi\phpCompiler();
 ```
+
+### Testing
+After installing recomended to run Test service in ```test/testAll.php```
+
 #### Declare variables
 |  | Variable | Command |
 | -- | -- | -- |
