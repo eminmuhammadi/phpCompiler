@@ -1,0 +1,60 @@
+	.input{
+			border-radius: 0px !important;
+			height: 125px !important;
+			border-top: 1px solid #e5e5e5 !important;
+			border-right: 0px !important;
+
+		}
+		.output{
+			border-radius: 0px !important;
+			height: 125px !important;
+			border-top: 0px !important;
+			border-left: 0px !important;
+			color:#fff !important;
+
+		}
+		.back-panel{
+			height:125px;
+			background-color:rgb(255,255,255,.0.4);
+		}
+		.header{
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-bottom:1px solid #e5e5e5;
+		}
+		.header .btn{
+			background-color: #fff;
+			color:#999999;
+			border:1px solid #e5e5e5;
+			padding-right:25px;
+			padding-left: 25px; 
+		}
+		.code-root{
+			height:600px;
+			border:1px solid #e5e5e5;
+		}
+		.code-heading{
+			border:1px solid #e5e5e5;
+			border-bottom: 0px;
+		}
+		.code-heading i , .code-heading input , .code-heading button{
+			border:0px;
+		}
+		.code-heading i{
+			height:40px;
+			width:30px;
+			text-align: center;
+			display: inline-block;
+			padding-top: 12px;
+			color:#495057;
+		}
+		.code-heading button{
+			background-color: #f7f7f7;
+			color:#999999;
+			border-right: 1px solid #e5e5e5 !important;
+			border-left: 1px solid #e5e5e5 !important;
+
+		}
+		#code{
+			height:600px !important;
+		}
