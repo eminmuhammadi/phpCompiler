@@ -185,6 +185,7 @@
   		lineNumbers: true,
   		theme: "eclipse",
   		autoCloseBrackets: true,
+  		viewportMargin: Infinity,
 
   		extraKeys: {
   			"Ctrl-F": "findPersistent",
@@ -200,7 +201,7 @@
 	/**
 	*  Code Mirror Editor Size
 	*/		
-	editor.setSize(null,500);
+	editor.setSize(null,'100%');
 	var modeInput = document.getElementById("mode");
 		CodeMirror.on(modeInput, "keypress", function(e) {
   		if (e.keyCode == 13) change();
