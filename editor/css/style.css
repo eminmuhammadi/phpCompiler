@@ -1,4 +1,7 @@
-	.input{
+		body {
+			background-color: #fcfcfc;
+		}
+		.input{
 			border-radius: 0px !important;
 			height: 125px !important;
 			border-top: 1px solid #e5e5e5 !important;
@@ -15,17 +18,18 @@
 		}
 		.back-panel{
 			height:135px;
-			background-color:rgb(255,255,255,.0.4);
+			background-color:#fcfcfc;
 		}
 		.header{
 			padding-top: 10px;
 			padding-bottom: 10px;
 			border-bottom:1px solid #e5e5e5;
+			background-color: #f9f9f9;
 		}
 		.header .btn{
 			background-color: #fff;
-			color:#999999;
-			border:1px solid #e5e5e5;
+			color:#939396;
+			border:1px solid #939396;
 			padding-right:25px;
 			padding-left: 25px; 
 		}

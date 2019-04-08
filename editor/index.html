@@ -29,8 +29,11 @@
 						<i class="fas fa-question"></i> Help
 					</button>	
 					<span style="float:right;">
+						<button class="btn" type="button" id="clear">
+							<i class="fas fa-trash"></i> Clear
+						</button>						
 						<button class="btn" type="button" id="run">
-							Run  <i class="fas fa-play"></i>
+							<span>Run</span>  <i class="fas fa-play"></i>
 						</button>
 					</span>
 				</div>
@@ -98,7 +101,7 @@
 	<div class="container">
 		<div class="row">
 			<div id="error" class="col-md-12 w-100 p-0"></div>
-					<div class="code-heading col-md-12 p-0 input-group flex-nowrap">
+					<div class="code-heading col-md-12 p-0 input-group flex-nowrap bg-white">
   						<div class="input-group-prepend">
 							<i class="far fa-file" aria-hidden="true"></i> 
   						</div>
@@ -106,10 +109,10 @@
   						<div class="input-group-prepend">
 							<button class="btn" type="button" onclick="change()">Rename</button>
   						</div>
-				</div>
+					</div>
 			<!-- Code -->
 			<div class="col-md-12 p-0 code-root">
-				<textarea id="code" name="code"></textarea>
+				<textarea id="code" name="code" autofocus="On"></textarea>
 			</div>
 			<!-- Output & Input -->
 			<div class="col-md-12 fixed-bottom back-panel p-0" id="build">
@@ -250,12 +253,17 @@
 	*  Check Document Ready Statement
 	*/	
     $(document).ready(function(){
+ 
 
     /**
 	*  Panel Toggle
 	*/		
 		$( "#backpanel" ).click(function() {
   			$("#build").toggle();
+		});
+
+		$( "#clear" ).click(function() {
+  			$("#output").html('$root clear > Clared\n');
 		});
 
 	/**
