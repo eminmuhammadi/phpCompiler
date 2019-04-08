@@ -15,7 +15,7 @@
    'command'    => 'javac',
    'executable' => '*.class',
    'runFile'    => 'java Main' , //out
-   'time'       => '10', //seconds
+   'time'       => '6', //seconds
    'code'       => $_POST['code'] ,
    'input'      => $_POST['input'],
    'fnCode'     => 'Main.java',

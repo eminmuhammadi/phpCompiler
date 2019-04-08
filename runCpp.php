@@ -15,7 +15,7 @@
    'command'    => 'g++',
    'executable' => 'a.out',
    'runFile'    => './a.out' , //out
-   'time'       => '1', //seconds
+   'time'       => '5', //seconds
    'code'       => $_POST['code'] ,
    'input'      => $_POST['input'],
    'fnCode'     => 'main.cpp',
