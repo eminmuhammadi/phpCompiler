@@ -159,8 +159,8 @@
 	/**
 	*   Display workspace
 	*/	
-	$('main').css('display','block');
 
+	$('main').css('display','block');
 
 	/**
 	*   Shortcut Library
@@ -177,7 +177,8 @@
 
 	/**
 	*  Code Mirror Installing
-	*/	
+	*/
+
 	CodeMirror.modeURL = "/editor/assets/codemirror/mode/%N/%N.js";
 	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
   		
@@ -199,7 +200,7 @@
 	/**
 	*  Code Mirror Editor Size
 	*/		
-	editor.setSize(null, 600);
+	editor.setSize(null,500);
 	var modeInput = document.getElementById("mode");
 		CodeMirror.on(modeInput, "keypress", function(e) {
   		if (e.keyCode == 13) change();
@@ -314,7 +315,9 @@
     		
     		// Show Data
     		function(data){
+
     			$("#output").append(data.result.output+'\n');
+
 				if(data.result.error != null) {
 					$("#error").append(`
 						<div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
@@ -325,6 +328,7 @@
 				}
 			});
 		}
+
 
   		$("#run").click(function(){
   			run();
@@ -341,8 +345,11 @@
 		shortcut.add("F9", function() {
     		$("#build").toggle();
 		});
+		
+		window.addEventListener("beforeunload", function(event) {
+    		event.returnValue = "Do you want to leave?";
+		});
 
-        
     });	
 	</script>
 </body>
