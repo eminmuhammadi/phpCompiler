@@ -50,7 +50,7 @@
 
 		.header{
 			padding: 10px;
-  			background-image:linear-gradient(to top, transparent 10%,#d5d6d7 350%);
+			background-color: #fff;
 		}
 
 		.header .btn{
