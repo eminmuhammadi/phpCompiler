@@ -107,7 +107,14 @@
   						</div>
 							<input class="form-control p-0" type="text" value="main.txt" id="mode"> 
   						<div class="input-group-prepend">
-							<button class="btn" type="button" onclick="change()">Rename</button>
+							<button class="btn" type="button" onclick="change()">
+								<span class="far fa-edit"></span>
+							</button>
+  						</div>
+  						<div class="input-group-prepend">
+							<button class="btn" type="button" id="download">
+								<span class="fas fa-download"></span>
+							</button>
   						</div>
 					</div>
 			<!-- Code -->
@@ -358,6 +365,31 @@
 		window.addEventListener("beforeunload", function(event) {
     		event.returnValue = "Do you want to leave?";
 		});
+
+
+		function download(fn, text) {
+    
+    		var element = document.createElement('a');
+    		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    		element.setAttribute('download', fn);
+
+    		element.style.display = 'none';
+    		document.body.appendChild(element);
+
+    		element.click();
+    		document.body.removeChild(element);
+
+		}
+
+  		$("#download").click(function(){
+			var code   = editor.getValue();
+    		var fn     = $("#mode").val();
+    
+    		download(fn, code);
+		});
+
+
+
 
     });	
 	</script>
