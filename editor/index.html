@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Editor &mdash; by phpCompiler</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+	<title>Editor &mdash; by eminmuhammadi/phpCompiler</title>
 	<link rel="stylesheet" type="text/css" href="/editor/assets/fontawesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="/editor/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/editor/css/style.css">
@@ -14,7 +15,6 @@
 </head>
 <body>
 
-
 <main role="main" style="display: none;">
 <form>	
 	<!-- Header -->
@@ -22,20 +22,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 p-0">
-					<button class="btn" type="button" id="backpanel" title="Toggle Panel">
-						<i class="fas fa-columns"></i> Panel
-					</button>
-					<button class="btn" type="button" data-toggle="modal" data-target="#help" title="Help">
-						<i class="fas fa-question"></i> Help
-					</button>	
-					<span style="float:right;">
+					<div class="d-flex justify-content-between">
+						<div>
+						<button class="btn" type="button" id="backpanel" title="Toggle Panel">
+							<i class="fas fa-columns"></i>
+						</button>
+						<button class="btn" type="button" data-toggle="modal" data-target="#help" title="Help">
+							<i class="fas fa-question"></i>
+						</button>
+						</div>
+					
+						<div>
+							<h4>
+								<a  class="brand"
+								 	style="text-decoration:none;color:#000;" 
+								 	target="_blank" 
+							   		href="https://github.com/eminmuhammadi/phpCompiler">phpCompiler
+								</a>
+							</h4>
+						</div>
+					
+						<div>	
 						<button class="btn" type="button" id="clear" title="Clear Output">
-							<i class="fas fa-trash"></i> Clear
+							<i class="fas fa-trash"></i>
 						</button>						
 						<button class="btn" type="button" id="run" title="Run Code">
-							<span>Run</span>  <i class="fas fa-play"></i>
-						</button>
-					</span>
+							<i class="fas fa-play"></i>
+						</button>	
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>
@@ -135,7 +150,7 @@
 			<!-- Output & Input -->
 			<div class="col-md-12 fixed-bottom back-panel p-0" id="build">
 				 <div class="container">
-				 	<div class="row">
+				 	<div class="row" style="padding-top:12px;">
 				 		<div class="col-6 p-0">
 				 			<code>
 				 				<textarea class="w-100 form-control input" id="input" name="input" placeholder="Your input goes here"></textarea>
@@ -180,8 +195,11 @@
 	/**
 	*   Display workspace
 	*/	
-
 	$('main').css('display','block');
+
+	// Toggle Panel
+	$("#build").toggle();
+
 
 	/**
 	*   Shortcut Library
@@ -230,6 +248,8 @@
   		}
 
 	});
+
+
 	/**
 	*  Code Mirror Editor Size
 	*/		
@@ -238,6 +258,7 @@
 		CodeMirror.on(modeInput, "keypress", function(e) {
   		if (e.keyCode == 13) change();
 	});
+
 
 
 	/**
@@ -348,6 +369,7 @@
 	*  Run Code
 	*/	
 	function run(){
+
 			var code   = editor.getValue();
 			var input  = $("#input").val();    	
 	  		var fnMode = $("#mode").val();
@@ -374,9 +396,18 @@
 			});
 	}
 
+	function showBuild(){
+		if ($("#build").is(":hidden")) { 
+	   		$("#build").toggle() ; 
+	  	}	
+	}
 
+	/**
+	*  Run Function
+	*/ 
   	$("#run").click(function(){
   		run();
+  		showBuild();
   		showEnd($('#output'));
   	});
 
@@ -385,6 +416,7 @@
   			
 	shortcut.add("F12", function() {
    		run();
+   		showBuild();
   		showEnd($('#output'));    		
 	});
 
@@ -396,10 +428,6 @@
     	var code   = editor.getValue();
     	var fn     = $("#mode").val();
     	download(fn, code);
-	});
-
-	window.addEventListener("beforeunload", function(event) {
-    	event.returnValue = "Do you want to leave?";
 	});
 
 
@@ -435,6 +463,13 @@
     
     	download(fn, code);
 	});
+
+
+
+	window.addEventListener("beforeunload", function(event) {
+    	event.returnValue = "Do you want to leave?";
+	});
+
 
   	//end ready
     });	

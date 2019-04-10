@@ -1,6 +1,27 @@
-		body {
-			background-color: #fcfcfc;
+
+		@media screen and (max-width: 576px) {
+		.brand{display: none;}
 		}
+
+		textarea:focus, 
+		textarea.form-control:focus, 
+		input.form-control:focus, 
+		input[type=text]:focus, 
+		input[type=password]:focus, 
+		input[type=email]:focus, 
+		input[type=number]:focus, 
+		[type=text].form-control:focus, 
+		[type=password].form-control:focus, 
+		[type=email].form-control:focus, 
+		[type=tel].form-control:focus, 
+		[contenteditable].form-control:focus {
+ 		 box-shadow: none;
+		}	
+
+		body {
+			background-color: #fff;
+		}
+
 		.input{
 			border-radius: 0px !important;
 			height: 125px !important;
@@ -8,6 +29,7 @@
 			border-right: 0px !important;
 
 		}
+
 		.output{
 			border-radius: 0px !important;
 			height: 125px !important;
@@ -16,16 +38,21 @@
 			color:#fff !important;
 
 		}
+
 		.back-panel{
 			height:135px;
-			background-color:#fcfcfc;
-		}
+  			background-image:linear-gradient(to bottom, transparent 10%,#d1d2d3 500%);
+    	}
+
+    	.back-panel div,.back-panel #output{
+    		border:0px !important;
+    	}
+
 		.header{
-			padding-top: 10px;
-			padding-bottom: 10px;
-			border-bottom:1px solid #e5e5e5;
-			background-color: #f9f9f9;
+			padding: 10px;
+  			background-image:linear-gradient(to top, transparent 10%,#d5d6d7 350%);
 		}
+
 		.header .btn{
 			background-color: #fff;
 			color:#939396;
@@ -33,17 +60,29 @@
 			padding-right:25px;
 			padding-left: 25px; 
 		}
+
+		.header .btn:hover{
+			color:#000;
+			transition: 0.5s;
+  			background-image:linear-gradient(to bottom, transparent 10%,#d1d2d3 500%);
+  			border:1px solid #000;
+
+		}
+
 		.code-root{
 			height:600px;
 			border:1px solid #e5e5e5;
 		}
+
 		.code-heading{
 			border:1px solid #e5e5e5;
 			border-bottom: 0px;
 		}
+
 		.code-heading i , .code-heading input , .code-heading button{
 			border:0px;
 		}
+
 		.code-heading i{
 			height:40px;
 			width:30px;
@@ -52,6 +91,7 @@
 			padding-top: 12px;
 			color:#495057;
 		}
+
 		.code-heading button{
 			background-color: #f7f7f7;
 			color:#999999;
@@ -59,6 +99,7 @@
 			border-left: 1px solid #e5e5e5 !important;
 
 		}
+
 		#code{
 			height:600px !important;
 		}
