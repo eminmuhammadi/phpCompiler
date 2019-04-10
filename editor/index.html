@@ -240,7 +240,7 @@
   		if (mode) {
     		editor.setOption("mode", spec);
     		CodeMirror.autoLoadMode(editor, mode);
-   			$("#output").append('$root '+spec+'\nSetted successfully\n');
+   			$("#output").append('$root '+spec+' > \n');
    			showEnd($('#output'));
   		} 
   		else {
@@ -263,7 +263,7 @@
 		});
 
 		$( "#clear" ).click(function() {
-  			$("#output").html('$root clear > Clared\n');
+  			$("#output").html('$root clear > Cleared\n');
 		});
 
 	/**
