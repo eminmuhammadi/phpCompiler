@@ -27,7 +27,7 @@
  * @author     Emin Muhammadi
  * @copyright  2019 Emin Muhammadi (EmiGa)
  * @license    https://github.com/eminmuhammadi/phpCompiler/blob/master/LICENSE  MIT License
- * @version    1.0.0
+ * @version    1.0.1
  * @link       https://github.com/eminmuhammadi/phpCompiler
  *
  */
@@ -411,24 +411,25 @@ class phpCompiler
 	}
 
 	function post($url, $param = array()){
-    	$PostParam = http_build_query($param);
-    	$options = array(
+    	  $PostParam = http_build_query($param);
+    	  $options = array(
         	'http' =>
-            	array(
-                	'method'  => 'POST',
-                	'header'  => 'Content-type: application/x-www-form-urlencoded',
-                	'content' => $PostParam
-            	)
-    		);
+            		array(
+                		'method'  => 'POST',
+                		'header'  => 'Content-type: application/x-www-form-urlencoded',
+                		'content' => $PostParam
+            		)
+          );
 
-    	$getContext  = stream_context_create($options);
-    	$result = file_get_contents($url, false, $getContext);
+    	  $getContext  = stream_context_create($options);
+    	  $result = file_get_contents($url, false, $getContext);
     	
-    	if($result === false){
-        	$error = error_get_last();
-        	throw new Exception('POST request failed: ' . $error['message']);
+    		if($result === false){
+        		$error = error_get_last();
+        		throw new \Exception('POST request failed: ' . $error['message']);
    	 	}
-    	return $result;
+		
+    	    return $result;
 	}
 
 }
