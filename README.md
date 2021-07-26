@@ -143,4 +143,4 @@ See also the list of [contributors](https://github.com/eminmuhammadi/phpCompiler
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/eminmuhammadi)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/emigapay)
